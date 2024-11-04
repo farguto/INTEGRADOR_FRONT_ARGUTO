@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   
   }
 
-  body {
+    body {
     background: white;
     color: black;
     margin: 0;
@@ -20,18 +20,14 @@ export const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
-  }
+    overflow-x: hidden;  
 
   #root {
     display: flex;
     flex-direction: column;
-  
-    margin:0;
-    padding:0;
-    width: 100vw;
-
-    
+    margin: 0;
+    padding: 0;
+    width: 100%;  
   }
 
   main {

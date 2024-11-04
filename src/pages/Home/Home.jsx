@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Categorias from "../../components/Categorias/Categorias";
 import Hero from "../../components/Hero/Hero";
@@ -13,6 +13,7 @@ import {
 } from "./HomeStyles";
 
 function Home() {
+  const [selectedCategory, setSelectedCategory] = useState(null);  
   const productsRef = useRef();
 
   const doScroll = () => {
@@ -22,21 +23,23 @@ function Home() {
     );
   };
 
+  
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <HomeWrapper>
-     
       <Hero doScroll={doScroll} />
-
 
       <CategoriasWrapper>
         <h2 style={{ textAlign: 'center' }}>Categorias</h2>
-        <Categorias />
+        <Categorias onSelectCategory={handleCategorySelect} />  
       </CategoriasWrapper>
 
-    
       <ProductosWrapper ref={productsRef}>
         <h2 style={{ textAlign: 'center' }}>Nuestros productos destacados</h2>
-        <CardsProductos />
+        <CardsProductos category={selectedCategory} /> 
         <div style={{ textAlign: 'center', marginTop: '20px', width: '100%' }}>
           <Link to="/Productos">
             <button> Ver más</button>
@@ -44,7 +47,6 @@ function Home() {
         </div>
       </ProductosWrapper>
 
-      
       <AboutWrapper>
         <About />
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
